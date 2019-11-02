@@ -56,6 +56,7 @@ class _DicePageState extends State<DicePage> {
                     if (rightDiceNumber == 1) {
                       leftDiceNumber = 1;
                     }
+                    //내가 새롭게 시도한 부분,,,잘된다 ㅋㅋㅋㅋ
                   });
                 },
                 child: Image.asset('images/dice$rightDiceNumber.png')),
