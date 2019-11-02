@@ -24,6 +24,13 @@ class _DicePageState extends State<DicePage> {
   // 동적인 상태를 사용할 때는 stful을 입력해서 stless에 있던 것들을 copy&paste한다
   var leftDiceNumber = 1;
   var rightDiceNumber = 1;
+  void RandomDice() {
+    setState(() {
+      leftDiceNumber = Random().nextInt(6) + 1;
+      rightDiceNumber = Random().nextInt(6) + 1;
+    });
+  }
+//함수를 생성해서 중복되는 코드를 제거해 보았다
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -37,11 +44,12 @@ class _DicePageState extends State<DicePage> {
             // flex는 이 박스와 뒤에 박스의 크기비율을 정해준다
             child: FlatButton(
                 onPressed: () {
-                  setState(() {
-                    // setState는 변수의 값이 바뀌면 전체 구조를 리빌딩을 해줘서 변환된 값을 전체에 적용한다
-                    leftDiceNumber = Random().nextInt(6) + 1;
-                    print('left Dice Number : $leftDiceNumber');
-                  });
+//                  setState(() {
+//                    // setState는 변수의 값이 바뀌면 전체 구조를 리빌딩을 해줘서 변환된 값을 전체에 적용한다
+//                    leftDiceNumber = Random().nextInt(6) + 1;
+//                    rightDiceNumber = Random().nextInt(6) + 1;
+//                  });
+                  RandomDice();
                 },
                 child: Image.asset('images/dice$leftDiceNumber.png')),
             //Image(image: AssetInsets('images/dice2')) 이렇게 긴 코드를 한줄로 줄여주었다
@@ -51,12 +59,13 @@ class _DicePageState extends State<DicePage> {
             child: FlatButton(
                 onPressed: () {
                   setState(() {
-                    rightDiceNumber = Random().nextInt(6) + 1;
-                    print('right button : $rightDiceNumber');
-                    if (rightDiceNumber == 1) {
-                      leftDiceNumber = 1;
-                    }
+//                    leftDiceNumber = Random().nextInt(6) + 1;
+//                    rightDiceNumber = Random().nextInt(6) + 1;
+//                    if (rightDiceNumber == 1) {
+//                      leftDiceNumber = 1;
+//                    }
                     //내가 새롭게 시도한 부분,,,잘된다 ㅋㅋㅋㅋ
+                    RandomDice();
                   });
                 },
                 child: Image.asset('images/dice$rightDiceNumber.png')),
